@@ -1,0 +1,49 @@
+PEN
+-----
+pen_id BIGINT (PK)
+brand_name VARCHAR
+price INT
+pen_type ENUM('BALL','GEL','FOUNTAIN')
+closing_type ENUM('TICK','CAP')
+
+
+BALL_PEN
+----------
+pen_id BIGINT (PK, FK → PEN.pen_id)
+refill_id BIGINT (FK → REFILL.refill_id)
+
+
+GEL_PEN
+---------
+pen_id BIGINT (PK, FK → PEN.pen_id)
+refill_id BIGINT (FK → REFILL.refill_id)
+
+
+FOUNTAIN_PEN
+--------------
+pen_id BIGINT (PK, FK → PEN.pen_id)
+ink_id BIGINT (FK → INK.ink_id)
+nib_id BIGINT (FK → NIB.nib_id)
+
+
+REFILL
+---------
+refill_id BIGINT (PK)
+brand_name VARCHAR
+color VARCHAR
+price INT
+
+
+INK
+------
+ink_id BIGINT (PK)
+brand_name VARCHAR
+color VARCHAR
+price INT
+
+
+NIB
+------
+nib_id BIGINT (PK)
+brand_name VARCHAR
+radius INT
