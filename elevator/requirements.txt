@@ -1,0 +1,8 @@
+1. A building can have multiple floors and elevators.
+2. User on any floor can press Up/Down 
+3. A passenger inside elevator can select one or more target floors
+4. Elevator move and down based on request and current direction
+5. When multiple elevator exist, choose the best elevator for the request
+6. Open/Close elevator door at stops with safety check
+7. Prevent overload beyond a certain weight
+8. Elevator montior should update with Floor nukber, Move up, Move Down
