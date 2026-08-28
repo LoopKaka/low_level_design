@@ -1,0 +1,11 @@
+1. Parking lot has multiple floors.
+2. Different types of vehicle can be parked
+3. Multiple entry and exit gates for parking lot.
+4. Each floor will have multiple parking spot.
+5. it'll be a human operated parking lot managment system.
+6. At the time of entry, a spot will assign to the vehicle, and a ticket will assign to vehicle owner.
+7. Parking fee calculation can be changed based on
+    1. Vehicle Type
+    2. Time
+    3. Vehicle Type + Time
+8. System should support both online and offline payments

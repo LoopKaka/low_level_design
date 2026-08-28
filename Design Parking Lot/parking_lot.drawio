@@ -1,0 +1,230 @@
+<mxfile host="app.diagrams.net" modified="2026-08-28T15:05:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="parking-class" name="Class Diagram">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Core classes -->
+        <mxCell id="ParkingLot" value="&lt;b&gt;ParkingLot&lt;/b&gt;&lt;hr&gt;- id: long&lt;br&gt;- name: String&lt;br&gt;- floors: List&lt;ParkingFloor&gt;&lt;br&gt;- gates: List&lt;Gate&gt;&lt;hr&gt;+ methods()" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="620" y="40" width="250" height="145" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ParkingFloor" value="&lt;b&gt;ParkingFloor&lt;/b&gt;&lt;hr&gt;- id: long&lt;br&gt;- floorNumber: int&lt;br&gt;- parkingSpots: List&lt;ParkingSpot&gt;&lt;hr&gt;+ methods()" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="300" y="250" width="250" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ParkingSpot" value="&lt;b&gt;ParkingSpot&lt;/b&gt;&lt;hr&gt;- id: long&lt;br&gt;- spotNumber: String&lt;br&gt;- spotType: SpotType&lt;br&gt;- status: SpotStatus" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="270" y="460" width="280" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="Gate" value="&lt;b&gt;Gate&lt;/b&gt;&lt;hr&gt;- id: long&lt;br&gt;- gateNumber: int&lt;br&gt;- type: GateType&lt;br&gt;- status: GateStatus&lt;br&gt;- operator: Operator" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="980" y="250" width="280" height="145" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="Operator" value="&lt;b&gt;Operator&lt;/b&gt;&lt;hr&gt;- id: long&lt;br&gt;- name: String&lt;br&gt;- phone: String&lt;br&gt;- employeeId: String&lt;hr&gt;+ methods()" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="460" width="250" height="145" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="Vehicle" value="&lt;b&gt;Vehicle&lt;/b&gt;&lt;hr&gt;- id: long&lt;br&gt;- vehicleNumber: String&lt;br&gt;- vehicleType: VehicleType&lt;hr&gt;+ methods()" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="620" y="250" width="270" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="Ticket" value="&lt;b&gt;Ticket&lt;/b&gt;&lt;hr&gt;- id: long&lt;br&gt;- ticketNumber: String&lt;br&gt;- vehicle: Vehicle&lt;br&gt;- parkingSpot: ParkingSpot&lt;br&gt;- entryGate: Gate&lt;br&gt;- entryOperator: Operator&lt;br&gt;- entryTime: LocalDateTime&lt;br&gt;- exitTime: LocalDateTime&lt;br&gt;- status: TicketStatus&lt;hr&gt;+ methods()" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="620" y="460" width="300" height="220" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ParkingSession" value="&lt;b&gt;ParkingSession&lt;/b&gt;&lt;hr&gt;- id: long&lt;br&gt;- vehicle: Vehicle&lt;br&gt;- parkingSpot: ParkingSpot&lt;br&gt;- entryTime: LocalDateTime&lt;br&gt;- exitTime: LocalDateTime&lt;br&gt;- ticket: Ticket&lt;hr&gt;+ methods()" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="980" y="680" width="280" height="180" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="Bill" value="&lt;b&gt;Bill&lt;/b&gt;&lt;hr&gt;- id: long&lt;br&gt;- ticket: Ticket&lt;br&gt;- amount: BigDecimal&lt;br&gt;- generatedAt: LocalDateTime&lt;br&gt;- status: BillStatus&lt;br&gt;- generatedBy: Operator&lt;br&gt;- payments: List&lt;Payment&gt;&lt;hr&gt;+ methods()" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="300" y="720" width="280" height="190" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="Payment" value="&lt;b&gt;Payment&lt;/b&gt;&lt;hr&gt;- id: long&lt;br&gt;- amount: BigDecimal&lt;br&gt;- mode: PaymentMode&lt;br&gt;- status: PaymentStatus&lt;br&gt;- transactionId: String&lt;br&gt;- paidAt: LocalDateTime&lt;hr&gt;+ methods()" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="300" y="960" width="280" height="175" as="geometry"/>
+        </mxCell>
+
+        <!-- Enums -->
+        <mxCell id="SpotType" value="&lt;b&gt;&amp;lt;&amp;lt;enum&amp;gt;&amp;gt;&lt;/b&gt;&lt;br&gt;SpotType&lt;hr&gt;BIKE&lt;br&gt;CAR&lt;br&gt;LARGE" style="shape=mxgraph.uml.enumeration;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="20" y="250" width="190" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="SpotStatus" value="&lt;b&gt;&amp;lt;&amp;lt;enum&amp;gt;&amp;gt;&lt;/b&gt;&lt;br&gt;SpotStatus&lt;hr&gt;EMPTY&lt;br&gt;FILED" style="shape=mxgraph.uml.enumeration;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="20" y="420" width="190" height="110" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="VehicleType" value="&lt;b&gt;&amp;lt;&amp;lt;enum&amp;gt;&amp;gt;&lt;/b&gt;&lt;br&gt;VehicleType&lt;hr&gt;CAR&lt;br&gt;BIKE&lt;br&gt;SUV&lt;br&gt;OTHERS" style="shape=mxgraph.uml.enumeration;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="20" y="580" width="190" height="135" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="GateType" value="&lt;b&gt;&amp;lt;&amp;lt;enum&amp;gt;&amp;gt;&lt;/b&gt;&lt;br&gt;GateType&lt;hr&gt;ENTRY&lt;br&gt;EXIT" style="shape=mxgraph.uml.enumeration;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1290" y="40" width="190" height="105" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="GateStatus" value="&lt;b&gt;&amp;lt;&amp;lt;enum&amp;gt;&amp;gt;&lt;/b&gt;&lt;br&gt;GateStatus&lt;hr&gt;OPEN&lt;br&gt;CLOSED" style="shape=mxgraph.uml.enumeration;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1290" y="160" width="190" height="105" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="TicketStatus" value="&lt;b&gt;&amp;lt;&amp;lt;enum&amp;gt;&amp;gt;&lt;/b&gt;&lt;br&gt;TicketStatus&lt;hr&gt;ACTIVE&lt;br&gt;COMPLETED&lt;br&gt;CANCELLED" style="shape=mxgraph.uml.enumeration;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="950" y="470" width="190" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="BillStatus" value="&lt;b&gt;&amp;lt;&amp;lt;enum&amp;gt;&amp;gt;&lt;/b&gt;&lt;br&gt;BillStatus&lt;hr&gt;PAID&lt;br&gt;NOT_PAID" style="shape=mxgraph.uml.enumeration;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="20" y="760" width="190" height="105" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="PaymentMode" value="&lt;b&gt;&amp;lt;&amp;lt;enum&amp;gt;&amp;gt;&lt;/b&gt;&lt;br&gt;PaymentMode&lt;hr&gt;CASH&lt;br&gt;CARD&lt;br&gt;UPI&lt;br&gt;ONLINE" style="shape=mxgraph.uml.enumeration;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="20" y="890" width="190" height="135" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="PaymentStatus" value="&lt;b&gt;&amp;lt;&amp;lt;enum&amp;gt;&amp;gt;&lt;/b&gt;&lt;br&gt;PaymentStatus&lt;hr&gt;INITIATED&lt;br&gt;SUCCESS&lt;br&gt;FAILED&lt;br&gt;REFUNDED" style="shape=mxgraph.uml.enumeration;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1050" width="190" height="145" as="geometry"/>
+        </mxCell>
+
+        <!-- Strategy -->
+        <mxCell id="FeeCalculationStrategy" value="&lt;b&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;FeeCalculationStrategy&lt;/b&gt;&lt;hr&gt;+ calculateFee(vehicleType, parkingDuration): BigDecimal" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="620" y="900" width="300" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="VehicleBased" value="&lt;b&gt;VehicleBased&lt;/b&gt;&lt;hr&gt;+ calculateFee()" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="620" y="1030" width="190" height="85" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="TimeBased" value="&lt;b&gt;TimeBased&lt;/b&gt;&lt;hr&gt;+ calculateFee()" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="830" y="1030" width="190" height="85" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="VehicleAndTime" value="&lt;b&gt;VehicleAndTime&lt;/b&gt;&lt;hr&gt;+ calculateFee()" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="1030" width="220" height="85" as="geometry"/>
+        </mxCell>
+
+        <!-- Adapter -->
+        <mxCell id="PaymentProcessor" value="&lt;b&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/b&gt;&lt;br&gt;&lt;b&gt;PaymentProcessor&lt;/b&gt;&lt;hr&gt;+ processPayment(request): Map&lt;br&gt;+ refund(request): Map" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="680" width="270" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="OnlinePaymentAdapter" value="&lt;b&gt;OnlinePaymentAdapter&lt;/b&gt;&lt;hr&gt;+ processPayment()&lt;br&gt;+ refund()" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="830" width="230" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="OfflinePaymentAdapter" value="&lt;b&gt;OfflinePaymentAdapter&lt;/b&gt;&lt;hr&gt;+ processPayment()&lt;br&gt;+ refund()" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="960" width="230" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Relationships -->
+        <mxCell id="r1" value="1 *" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=diamond;endFill=1;" edge="1" parent="1" source="ParkingLot" target="ParkingFloor"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r2" value="1 *" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=diamond;endFill=1;" edge="1" parent="1" source="ParkingLot" target="Gate"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r3" value="1 *" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=diamond;endFill=1;" edge="1" parent="1" source="ParkingFloor" target="ParkingSpot"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="r4" value="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="Gate" target="Operator"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r5" value="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="Ticket" target="Vehicle"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r6" value="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="Ticket" target="ParkingSpot"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r7" value="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="Ticket" target="Gate"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r8" value="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="Ticket" target="Operator"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r9" value="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="ParkingSession" target="Vehicle"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r10" value="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="ParkingSession" target="ParkingSpot"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r11" value="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="ParkingSession" target="Ticket"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r12" value="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="Bill" target="Ticket"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r13" value="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="Bill" target="Operator"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r14" value="1 *" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="Bill" target="Payment"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="r15" value="" style="edgeStyle=orthogonalEdgeStyle;dashed=1;html=1;endArrow=open;" edge="1" parent="1" source="ParkingSpot" target="SpotType"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r16" value="" style="edgeStyle=orthogonalEdgeStyle;dashed=1;html=1;endArrow=open;" edge="1" parent="1" source="ParkingSpot" target="SpotStatus"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r17" value="" style="edgeStyle=orthogonalEdgeStyle;dashed=1;html=1;endArrow=open;" edge="1" parent="1" source="Vehicle" target="VehicleType"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r18" value="" style="edgeStyle=orthogonalEdgeStyle;dashed=1;html=1;endArrow=open;" edge="1" parent="1" source="Gate" target="GateType"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r19" value="" style="edgeStyle=orthogonalEdgeStyle;dashed=1;html=1;endArrow=open;" edge="1" parent="1" source="Gate" target="GateStatus"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r20" value="" style="edgeStyle=orthogonalEdgeStyle;dashed=1;html=1;endArrow=open;" edge="1" parent="1" source="Ticket" target="TicketStatus"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r21" value="" style="edgeStyle=orthogonalEdgeStyle;dashed=1;html=1;endArrow=open;" edge="1" parent="1" source="Bill" target="BillStatus"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r22" value="" style="edgeStyle=orthogonalEdgeStyle;dashed=1;html=1;endArrow=open;" edge="1" parent="1" source="Payment" target="PaymentMode"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r23" value="" style="edgeStyle=orthogonalEdgeStyle;dashed=1;html=1;endArrow=open;" edge="1" parent="1" source="Payment" target="PaymentStatus"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- Strategy inheritance -->
+        <mxCell id="r24" value="" style="edgeStyle=orthogonalEdgeStyle;dashed=1;html=1;endArrow=block;endFill=0;" edge="1" parent="1" source="VehicleBased" target="FeeCalculationStrategy"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r25" value="" style="edgeStyle=orthogonalEdgeStyle;dashed=1;html=1;endArrow=block;endFill=0;" edge="1" parent="1" source="TimeBased" target="FeeCalculationStrategy"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r26" value="" style="edgeStyle=orthogonalEdgeStyle;dashed=1;html=1;endArrow=block;endFill=0;" edge="1" parent="1" source="VehicleAndTime" target="FeeCalculationStrategy"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- Adapter inheritance -->
+        <mxCell id="r27" value="" style="edgeStyle=orthogonalEdgeStyle;dashed=1;html=1;endArrow=block;endFill=0;" edge="1" parent="1" source="OnlinePaymentAdapter" target="PaymentProcessor"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r28" value="" style="edgeStyle=orthogonalEdgeStyle;dashed=1;html=1;endArrow=block;endFill=0;" edge="1" parent="1" source="OfflinePaymentAdapter" target="PaymentProcessor"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram id="parking-schema" name="Schema Diagram">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Tables -->
+        <mxCell id="t_parking_lot" value="&lt;b&gt;PARKING_LOT&lt;/b&gt;&lt;hr&gt;PK id BIGINT&lt;br&gt;name VARCHAR(100)" style="shape=mxgraph.database.table;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="650" y="30" width="240" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="t_floor" value="&lt;b&gt;PARKING_FLOOR&lt;/b&gt;&lt;hr&gt;PK id BIGINT&lt;br&gt;FK parking_lot_id BIGINT&lt;br&gt;floor_number INT" style="shape=mxgraph.database.table;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="350" y="190" width="270" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="t_gate" value="&lt;b&gt;GATE&lt;/b&gt;&lt;hr&gt;PK id BIGINT&lt;br&gt;FK parking_lot_id BIGINT&lt;br&gt;gate_number INT&lt;br&gt;gate_type VARCHAR(20)&lt;br&gt;gate_status VARCHAR(20)&lt;br&gt;FK operator_id BIGINT" style="shape=mxgraph.database.table;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="980" y="190" width="290" height="165" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="t_spot" value="&lt;b&gt;PARKING_SPOT&lt;/b&gt;&lt;hr&gt;PK id BIGINT&lt;br&gt;FK floor_id BIGINT&lt;br&gt;spot_number VARCHAR(30)&lt;br&gt;spot_type VARCHAR(20)&lt;br&gt;status VARCHAR(20)" style="shape=mxgraph.database.table;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="300" y="390" width="290" height="145" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="t_operator" value="&lt;b&gt;OPERATOR&lt;/b&gt;&lt;hr&gt;PK id BIGINT&lt;br&gt;name VARCHAR(100)&lt;br&gt;phone VARCHAR(30)&lt;br&gt;employee_id VARCHAR(50) UNIQUE" style="shape=mxgraph.database.table;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="390" width="260" height="125" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="t_vehicle" value="&lt;b&gt;VEHICLE&lt;/b&gt;&lt;hr&gt;PK id BIGINT&lt;br&gt;vehicle_number VARCHAR(30) UNIQUE&lt;br&gt;vehicle_type VARCHAR(20)" style="shape=mxgraph.database.table;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="650" y="390" width="260" height="115" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="t_ticket" value="&lt;b&gt;TICKET&lt;/b&gt;&lt;hr&gt;PK id BIGINT&lt;br&gt;ticket_number VARCHAR(50) UNIQUE&lt;br&gt;FK vehicle_id BIGINT&lt;br&gt;FK parking_spot_id BIGINT&lt;br&gt;FK entry_gate_id BIGINT&lt;br&gt;FK entry_operator_id BIGINT&lt;br&gt;entry_time TIMESTAMP&lt;br&gt;exit_time TIMESTAMP NULL&lt;br&gt;status VARCHAR(20)" style="shape=mxgraph.database.table;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="650" y="560" width="310" height="225" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="t_session" value="&lt;b&gt;PARKING_SESSION&lt;/b&gt;&lt;hr&gt;PK id BIGINT&lt;br&gt;FK vehicle_id BIGINT&lt;br&gt;FK parking_spot_id BIGINT&lt;br&gt;FK ticket_id BIGINT UNIQUE&lt;br&gt;entry_time TIMESTAMP&lt;br&gt;exit_time TIMESTAMP NULL" style="shape=mxgraph.database.table;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="600" width="300" height="175" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="t_bill" value="&lt;b&gt;BILL&lt;/b&gt;&lt;hr&gt;PK id BIGINT&lt;br&gt;FK ticket_id BIGINT&lt;br&gt;amount DECIMAL(12,2)&lt;br&gt;generated_at TIMESTAMP&lt;br&gt;status VARCHAR(20)&lt;br&gt;FK generated_by BIGINT" style="shape=mxgraph.database.table;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="300" y="840" width="280" height="165" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="t_payment" value="&lt;b&gt;PAYMENT&lt;/b&gt;&lt;hr&gt;PK id BIGINT&lt;br&gt;FK bill_id BIGINT&lt;br&gt;amount DECIMAL(12,2)&lt;br&gt;payment_mode VARCHAR(20)&lt;br&gt;payment_status VARCHAR(20)&lt;br&gt;transaction_id VARCHAR(100)&lt;br&gt;paid_at TIMESTAMP NULL" style="shape=mxgraph.database.table;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=6;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="300" y="1040" width="300" height="185" as="geometry"/>
+        </mxCell>
+
+        <!-- Relationships -->
+        <mxCell id="s1" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="t_parking_lot" target="t_floor"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="s2" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="t_parking_lot" target="t_gate"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="s3" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="t_floor" target="t_spot"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="s4" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="t_operator" target="t_gate"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="s5" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="t_vehicle" target="t_ticket"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="s6" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="t_spot" target="t_ticket"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="s7" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="t_gate" target="t_ticket"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="s8" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="t_operator" target="t_ticket"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="s9" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="t_vehicle" target="t_session"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="s10" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="t_spot" target="t_session"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="s11" value="1 : 1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="t_ticket" target="t_session"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="s12" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="t_ticket" target="t_bill"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="s13" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="t_operator" target="t_bill"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="s14" value="1 : N" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="t_bill" target="t_payment"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- Notes -->
+        <mxCell id="note1" value="Design note: A payment history is modeled as 1:N from BILL to PAYMENT because retries / multiple payment attempts may exist." style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;" vertex="1" parent="1">
+          <mxGeometry x="700" y="900" width="430" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="note2" value="Design note: PARKING_SPOT stores physical inventory. Current occupancy is represented by the active PARKING_SESSION; avoid storing vehicle_id directly on the spot to prevent duplicate sources of truth." style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="820" width="480" height="120" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
